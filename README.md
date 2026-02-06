@@ -2,7 +2,7 @@
 
 **Adaptive Context Protocol** - Multi-resolution data serialization for token-efficient LLM communication.
 
-[![PyPI version](https://badge.fury.io/py/adaptive-context.svg)](https://pypi.org/project/adaptive-context/)
+[![PyPI version](https://badge.fury.io/py/adaptive-context-resolution.svg)](https://pypi.org/project/adaptive-context-resolution/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 
@@ -22,13 +22,13 @@ ACP enables data sources to serve information at multiple resolution levels, dra
 ## Installation
 
 ```bash
-pip install adaptive-context
+pip install adaptive-context-resolution
 ```
 
 With optional dependencies:
 ```bash
-pip install adaptive-context[tiktoken]  # Accurate token counting
-pip install adaptive-context[llm]       # LLM-assisted summaries
+pip install adaptive-context-resolution[tiktoken]  # Accurate token counting
+pip install adaptive-context-resolution[llm]       # LLM-assisted summaries
 ```
 
 ## Quick Start
