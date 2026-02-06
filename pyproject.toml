@@ -50,10 +50,10 @@ all = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/bhansa/acp-protocol"
-Documentation = "https://github.com/bhansa/acp-protocol#readme"
-Repository = "https://github.com/bhansa/acp-protocol"
-Issues = "https://github.com/bhansa/acp-protocol/issues"
+Homepage = "https://github.com/bhansa/adaptive-context-resolution"
+Documentation = "https://github.com/bhansa/adaptive-context-resolution#readme"
+Repository = "https://github.com/bhansa/adaptive-context-resolution"
+Issues = "https://github.com/bhansa/adaptive-context-resolution/issues"
 
 [tool.hatch.build.targets.sdist]
 include = [
