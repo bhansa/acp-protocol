@@ -1,14 +1,14 @@
-# ACP Protocol
+# Adaptive Context Resolution
 
-**Adaptive Context Protocol** - Multi-resolution data serialization for token-efficient LLM communication.
+Multi-resolution data serialization for token-efficient LLM communication.
 
 [![PyPI version](https://badge.fury.io/py/adaptive-context-resolution.svg)](https://pypi.org/project/adaptive-context-resolution/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 
-## What is ACP?
+## Overview
 
-ACP enables data sources to serve information at multiple resolution levels, dramatically reducing token consumption when communicating with LLMs.
+Adaptive Context Resolution enables data sources to serve information at multiple resolution levels, dramatically reducing token consumption when communicating with LLMs.
 
 | Level | Name | Description | Typical Tokens |
 |-------|------|-------------|----------------|
