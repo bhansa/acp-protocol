@@ -2,8 +2,9 @@
 MCP Server integration for serving ACP documents.
 """
 
+from collections.abc import Callable
 from functools import wraps
-from typing import Any, Callable, Optional
+from typing import Any
 
 from ..document import ACPDocument
 from ..levels import ResolutionLevel
@@ -11,8 +12,8 @@ from ..levels import ResolutionLevel
 
 def acp_resource(
     entity: str,
-    key_fields: Optional[list[str]] = None,
-    summary_template: Optional[str] = None,
+    key_fields: list[str] | None = None,
+    summary_template: str | None = None,
 ):
     """
     Decorator to convert a function's return value to an ACP document.
@@ -75,8 +76,8 @@ class ACPServer:
     def resource(
         self,
         entity: str,
-        key_fields: Optional[list[str]] = None,
-        summary_template: Optional[str] = None,
+        key_fields: list[str] | None = None,
+        summary_template: str | None = None,
     ):
         """Register a resource handler."""
         def decorator(func: Callable[..., dict]) -> Callable[..., dict]:
@@ -92,8 +93,8 @@ class ACPServer:
         self,
         entity: str,
         params: dict[str, Any],
-        level: Optional[ResolutionLevel] = None,
-        token_budget: Optional[int] = None,
+        level: ResolutionLevel | None = None,
+        token_budget: int | None = None,
     ) -> Any:
         """
         Handle a request and return data at appropriate resolution.

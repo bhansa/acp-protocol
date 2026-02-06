@@ -5,7 +5,7 @@ Core ACPDocument class for multi-resolution data representation.
 import json
 from dataclasses import dataclass, field
 from datetime import datetime
-from typing import Any, Optional, Union
+from typing import Any
 
 from .levels import ResolutionLevel
 
@@ -39,12 +39,12 @@ class ACPDocument:
 
     # Metadata
     token_counts: dict[str, int] = field(default_factory=dict)
-    generated_at: Optional[datetime] = None
+    generated_at: datetime | None = None
     confidence: float = 1.0
 
     # Configuration
     key_fields: list[str] = field(default_factory=list)
-    summary_template: Optional[str] = None
+    summary_template: str | None = None
 
     def __post_init__(self):
         """Initialize L3 from data if not set."""
@@ -59,8 +59,8 @@ class ACPDocument:
         data: dict[str, Any],
         entity: str,
         id: str,
-        key_fields: Optional[list[str]] = None,
-        summary_template: Optional[str] = None,
+        key_fields: list[str] | None = None,
+        summary_template: str | None = None,
         auto_generate: bool = True,
     ) -> "ACPDocument":
         """
@@ -123,8 +123,8 @@ class ACPDocument:
 
     def get(
         self,
-        level: Optional[Union[ResolutionLevel, int]] = None,
-        token_budget: Optional[int] = None,
+        level: ResolutionLevel | int | None = None,
+        token_budget: int | None = None,
     ) -> Any:
         """
         Get data at a specific resolution level or within a token budget.
@@ -147,7 +147,7 @@ class ACPDocument:
 
         raise ValueError("Must specify either 'level' or 'token_budget'")
 
-    def _get_level(self, level: Union[ResolutionLevel, int]) -> Any:
+    def _get_level(self, level: ResolutionLevel | int) -> Any:
         """Get data at specific level."""
         if isinstance(level, int):
             level = ResolutionLevel(level)
@@ -174,7 +174,7 @@ class ACPDocument:
             return self.l1
         return self.l0
 
-    def to_acp_format(self, level: Optional[ResolutionLevel] = None) -> str:
+    def to_acp_format(self, level: ResolutionLevel | None = None) -> str:
         """
         Serialize to ACP text format.
 
@@ -219,7 +219,7 @@ class ACPDocument:
 
         return "\n".join(lines)
 
-    def to_json(self, level: Optional[ResolutionLevel] = None) -> str:
+    def to_json(self, level: ResolutionLevel | None = None) -> str:
         """Serialize to JSON format."""
         if level is not None:
             return json.dumps(self.get(level=level), indent=2)

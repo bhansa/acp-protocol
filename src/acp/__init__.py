@@ -4,8 +4,8 @@ A multi-resolution data serialization framework for token-efficient LLM communic
 """
 
 from .document import ACPDocument
+from .generators import LevelGenerator, LLMAssistedGenerator, SchemaBasedGenerator
 from .levels import ResolutionLevel
-from .generators import LevelGenerator, SchemaBasedGenerator, LLMAssistedGenerator
 
 __version__ = "0.1.0"
 __all__ = [

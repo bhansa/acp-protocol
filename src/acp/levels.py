@@ -3,7 +3,6 @@ Resolution levels for ACP documents.
 """
 
 from enum import IntEnum
-from typing import Any
 
 
 class ResolutionLevel(IntEnum):

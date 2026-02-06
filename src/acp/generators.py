@@ -3,7 +3,7 @@ Level generators for automatically creating ACP resolution levels.
 """
 
 from abc import ABC, abstractmethod
-from typing import Any, Optional
+from typing import Any
 
 
 class LevelGenerator(ABC):
@@ -14,7 +14,7 @@ class LevelGenerator(ABC):
         self,
         data: dict[str, Any],
         entity_type: str,
-        template: Optional[str] = None,
+        template: str | None = None,
     ) -> str:
         """Generate L1 (summary) representation."""
         pass
@@ -24,7 +24,7 @@ class LevelGenerator(ABC):
         self,
         data: dict[str, Any],
         entity_type: str,
-        key_fields: Optional[list[str]] = None,
+        key_fields: list[str] | None = None,
     ) -> dict[str, Any]:
         """Generate L2 (key facts) representation."""
         pass
@@ -71,7 +71,7 @@ class SchemaBasedGenerator(LevelGenerator):
         self,
         data: dict[str, Any],
         entity_type: str,
-        template: Optional[str] = None,
+        template: str | None = None,
     ) -> str:
         """
         Generate a natural language one-liner summary.
@@ -134,7 +134,7 @@ class SchemaBasedGenerator(LevelGenerator):
         self,
         data: dict[str, Any],
         entity_type: str,
-        key_fields: Optional[list[str]] = None,
+        key_fields: list[str] | None = None,
     ) -> dict[str, Any]:
         """
         Generate key facts representation.
@@ -277,7 +277,7 @@ class LLMAssistedGenerator(LevelGenerator):
         self,
         data: dict[str, Any],
         entity_type: str,
-        template: Optional[str] = None,
+        template: str | None = None,
     ) -> str:
         """Generate L1 using LLM for natural language summary."""
         if template:
@@ -322,7 +322,7 @@ Summary:"""
         self,
         data: dict[str, Any],
         entity_type: str,
-        key_fields: Optional[list[str]] = None,
+        key_fields: list[str] | None = None,
     ) -> dict[str, Any]:
         """Generate L2 - uses schema-based for consistency."""
         # L2 should be deterministic, so we use schema-based
